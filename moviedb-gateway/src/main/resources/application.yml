@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: moviedb-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enable: true
+          lower-case-service-id: true
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: http://${KEYCLOAK_SERVER}:${KEYCLOAK_PORT}/realms/mscourserealm
+#          token authentication URI configuration. To find the above URI, you need to go to:
+#          keycloak -> choose your realm -> settings -> endpoints -> openID endpoints -> issuer URI
+
+# configuracao para detectar lower case no path da rota.
+
+server:
+  port:
+    5700
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:5600/eureka
+      #      formato acima: http://USUARIO:PASSWORD@LOCALHOST:PORT
+
