@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: json-parser
+
+  jpa:
+    show-sql: true
+    properties:
+      format_sql: true
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/MovieDB?createDatabaseIfNotExist=true
+    username: ${USER}
+    password: ${PASSWORD}
+
+server:
+  port: 0
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
