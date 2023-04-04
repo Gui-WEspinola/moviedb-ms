@@ -1,7 +1,11 @@
 package io.github.guiwespinola.service;
 
-import org.springframework.stereotype.Service;
+import io.github.guiwespinola.dtos.MovieDTO;
+import io.github.guiwespinola.model.Movie;
 
-@Service
 public interface MovieService {
+
+    MovieDTO findMovieById(String title);
+
+    MovieDTO save(Movie movie);
 }
