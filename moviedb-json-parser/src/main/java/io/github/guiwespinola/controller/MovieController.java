@@ -3,7 +3,7 @@ package io.github.guiwespinola.controller;
 import io.github.guiwespinola.dtos.MovieDTO;
 import io.github.guiwespinola.model.Movie;
 import io.github.guiwespinola.service.MovieService;
-import io.github.guiwespinola.util.OMDBApiConsumer;
+import io.github.guiwespinola.service.OmdbService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ public class MovieController {
 
     private final MovieService movieService;
 
-    private final OMDBApiConsumer omdbApiConsumer;
+    private final OmdbService omdbService;
 
     private final ModelMapper mapper;
 
@@ -25,9 +25,9 @@ public class MovieController {
         return movieService.findMovieById(title);
     }
 
-    @PostMapping
+    @PostMapping("/omdb/api/")
     public ResponseEntity<MovieDTO> postMovie(@RequestParam String title) {
-        var response = omdbApiConsumer.findMovieByTitle(title);
+        var response = omdbService.findMovieByTitle();
         var movie = mapper.map(response.getBody(), MovieDTO.class);
         System.out.println(movie);
         return ResponseEntity.status(response.getStatusCode()).body(movieService.save(mapper.map(movie, Movie.class)));

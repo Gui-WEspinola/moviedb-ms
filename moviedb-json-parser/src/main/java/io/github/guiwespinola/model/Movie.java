@@ -1,8 +1,6 @@
 package io.github.guiwespinola.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +10,8 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
+@Getter
+@Setter
 @AllArgsConstructor
 public class Movie {
 
@@ -28,4 +28,12 @@ public class Movie {
     private String imdbRating;
 
     private String imdbID;
+
+    private String director;
+
+    private String writer;
+
+    private String actors;
+
+    private String plot;
 }
